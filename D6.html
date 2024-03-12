@@ -87,7 +87,7 @@
       const title = document.querySelector("h1")
       title.innerText = "Ho cambiato il testo!!"
     }
-    console.log(changeTitle)
+    console.log(changeTitle("h1"))
     /* ESERCIZIO 2
      Scrivi una funzione per aggiungere al titolo della pagina una classe "myHeading"
   */
@@ -95,7 +95,7 @@
     const addClassToTitle = function () {
       document.className = "myHeading"
     }
-    console.log(addClassToTitle)
+    console.log(addClassToTitle("h1"))
 
 
     /* ESERCIZIO 3
@@ -111,6 +111,7 @@
         })
       })
     }
+    console.log(changePcontent())
 
     /* ESERCIZIO 4
      Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
@@ -122,17 +123,19 @@
         link.href = 'https://www.google.com'
       })
     }
+    console.log(changeUrls("a"))
 
     /* ESERCIZIO 5
      Scrivi una funzione che aggiunga un nuovo elemento lista alla seconda lista non ordinata
   */
 
     const addToTheSecond = function () {
-      const secondList = document.querySelector("ul")[2]
+      const secondList = document.querySelector("ul:nth-child(2)")
       const newListItem = document.createElement('li')
-      newListItem.textContent = 'Nuovo elemento di lista'
-      secondUnorderedList.appendChild(newListItem)
+      newListItem.innerText = 'Nuovo elemento di lista'
+      secondList.appendChild(newListItem)
     }
+    addToTheSecond()
 
     /* ESERCIZIO 6
      Scrivi una funzione che aggiunga un paragrafo al primo div
@@ -140,18 +143,21 @@
 
     const addParagraph = function () {
       const newDiv = document.querySelector("body div")
-      const newP = newDiv.createElement("p")
+      const newP = document.createElement("p")
       newP.innerText = "Sono un nuovo paragrafo"
+      newDiv.appendChild(newP)
     }
+    addParagraph("body div")
 
     /* ESERCIZIO 7
      Scrivi una funzione che faccia scomparire la prima lista non ordinata
   */
 
     const hideFirstUl = function () {
-      const ul1 = document.querySelector("#firstList")
-      ul1.classList.remove
+      const ul1 = document.querySelector("#secondList")
+      ul1.style.display = 'none';
     }
+    hideFirstUl()
 
     /* ESERCIZIO 8 
      Scrivi una funzione che renda verde il background di ogni lista non ordinata
@@ -160,10 +166,10 @@
     const paintItGreen = function () {
       const ulAll = document.querySelectorAll('ul');
       ulAll.forEach(list => {
-        list.style.backgroundColor = 'green';
+        list.style.backgroundColor = "green";
       })
     }
-    console.log(paintItGreen)
+    paintItGreen()
 
     /* ESERCIZIO 9
      Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
